@@ -1,22 +1,19 @@
-const express = require("express");
 const path = require("path");
-const app = express();
+
+module.exports = function (app) {
 
 //Homepage
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
-  
-//Exercise.html
-app.get("/exercise", (req, res) => {
-res.sendFile(path.join(__dirname, "../public/exercise.html"));
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-//Stats.html
-app.get("/stats", (req, res) => {
-res.sendFile(path.join(__dirname, "../public/stats.html"));
+//Exercises
+app.get("/exercise", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/exercise.html"));
 });
 
-//Export routes
-module.exports = app;
-
+//Stats
+app.get("/stats", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/stats.html"));
+});
+}
