@@ -45,7 +45,7 @@ const workoutSchema = new Schema({
 });
 
 // Schema to be exported throughout the application
-const Workout = mongoose.model("Workout", WorkoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 
 // Export model
 module.exports = Workout;
