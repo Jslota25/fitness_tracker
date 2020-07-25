@@ -1,11 +1,22 @@
-const express = require("express");
 const db = require("../models");
-const app = express();
+const app = require("express");
+module.exports = function (app) {
 
-//Post new workout
+//Create workout
 app.post("/api/workouts", (req,res) => {
-    db.Workout.create({})
-     .then((Workout) => {
+  db.Workout.create({})
+   .then((Workout) => {
+    res.json(Workout);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
+
+//Get all workouts
+app.get("/api/workouts", (req, res) => {
+  db.Workout.find({})
+    .then((Workout) => { 
       res.json(Workout);
     })
     .catch(err => {
@@ -13,41 +24,28 @@ app.post("/api/workouts", (req,res) => {
     });
   });
 
-//Get workouts
-app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
-      .then((Workout) => { 
-        res.json(Workout);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-    });
-
-//Update existing workout
+//Update a workout
 app.put("/api/workouts/:id", ({body, params}, res) => {
-    db.Workout.findByIdAndUpdate(
-        {_id: req.params.id}, 
-        {$push: {exercises: body}}, 
-        {new: true})
-      .then((Workout) => {
-        res.json(Workout);
-      })
-      .catch(err => {
-        res.json(err);
-      })
-    });
-
-// Get previous workouts
-app.get("/workouts/range", (req, res) => {
-    db.Workout.find({})
-      .then(Workout => {
-        res.json(Workout);
-      })
-      .catch(err => {
-        res.json(err);
-      });
+  db.Workout.findByIdAndUpdate(
+      {_id: req.params.id}, 
+      {$push: {exercises: body}}, 
+      {new: true})
+    .then((Workout) => {
+      res.json(Workout);
+    })
+    .catch(err => {
+      res.json(err);
+    })
   });
 
-//Export routes 
-module.exports = app;
+//Get previous workouts
+app.get("/workouts/range", (req, res) => {
+  db.Workout.find({})
+    .then((Workout) => {
+      res.json(Workout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+  });
+};
