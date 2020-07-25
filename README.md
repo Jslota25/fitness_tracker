@@ -10,7 +10,7 @@ HTML, CSS, Javascript, Node, MongoDB, Heroku
 An app that allows a user to create, view, and alter custom workout regimes.  
 
 # Link
-<a href ="https://fitness-tracker-slota.herokuapp.com/">jFitness Tracker App</a>
+<a href ="https://fitness-tracker-slota.herokuapp.com/">Fitness Tracker App</a>
 
 # Contact
 Email: <a href="mailto:jslota17@comcast.net">jslota17@comcast.net</a> <br>
