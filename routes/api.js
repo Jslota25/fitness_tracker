@@ -1,5 +1,6 @@
-const app = require("express");
+const express = require("express");
 const db = require("../models");
+const app = express();
 
 //Post new workout
 app.post("/api/workouts", (req,res) => {
@@ -47,3 +48,6 @@ app.get("/workouts/range", (req, res) => {
         res.json(err);
       });
   });
+
+//Export routes 
+module.exports = app;
