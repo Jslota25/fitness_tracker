@@ -36,3 +36,14 @@ app.put("/api/workouts/:id", ({body, params}, res) => {
         res.json(err);
       })
     });
+
+// Get previous workouts
+app.get("/workouts/range", (req, res) => {
+    db.Workout.find({})
+      .then(Workout => {
+        res.json(Workout);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
